@@ -46,6 +46,17 @@ const products: Product[] = [
   { id: "WIDURI", name: "Widuri", basePriceSmall: 15000 },
 ];
 
+const subChannelLabel: Record<SubChannel, string> = {
+  post_sosmed: "Posting Sosial Media",
+  ads_sosmed: "Iklan Sosial Media",
+  grabfood: "GrabFood",
+  shopeefood: "ShopeeFood",
+  direct: "Direct (walk-in / teman)",
+  reseller: "Reseller",
+  referral: "Referral",
+};
+
+// sub-channel valid untuk masing-masing channel
 const onlineSubChannels: SubChannel[] = [
   "post_sosmed",
   "ads_sosmed",
@@ -101,16 +112,17 @@ export default function OrdersPage() {
   ) {
     setForm((prev) => {
       let next = { ...prev, [field]: value } as typeof form;
-// Kalau channel diganti, pastikan subChannel ikut menyesuaikan
-if (field === "channel") {
-  const ch = value as SalesChannel;
-  const allowed =
-    ch === "online" ? onlineSubChannels : offlineSubChannels;
 
-  if (!allowed.includes(next.subChannel)) {
-    next.subChannel = allowed[0]; // set ke sub-channel pertama yang valid
-  }
-}
+      // Jika channel diganti, pastikan subChannel ikut menyesuaikan
+      if (field === "channel") {
+        const ch = value as SalesChannel;
+        const allowed =
+          ch === "online" ? onlineSubChannels : offlineSubChannels;
+
+        if (!allowed.includes(next.subChannel)) {
+          next.subChannel = allowed[0]; // set ke sub-channel pertama yang valid
+        }
+      }
 
       // Kalau ganti produk atau size dan bukan free product, update harga otomatis
       if (
@@ -209,7 +221,7 @@ if (field === "channel") {
     >
       <h1 style={{ marginBottom: "4px" }}>Pencatatan Order</h1>
       <p style={{ marginBottom: "24px", color: "#555" }}>
-        Pilih produk & size, lalu catat order dari semua channel. Centang{" "}
+        Pilih produk &amp; size, lalu catat order dari semua channel. Centang{" "}
         <b>Free Product</b> jika hanya keluar produk tanpa uang masuk (promo,
         tester, bonus). Subsidi ongkir juga bisa dicatat per transaksi sebagai
         expense.
@@ -248,20 +260,19 @@ if (field === "channel") {
           <label style={{ fontSize: "14px" }}>
             Produk
             <br />
-<select
-  value={form.productId}
-  onChange={(e) =>
-    handleChange("productId", e.target.value as ProductId)
-  }
-  style={{ width: "100%", padding: "6px 8px", marginTop: "4px" }}
->
-  {products.map((p) => (
-    <option key={p.id} value={p.id}>
-      {p.name}
-    </option>
-  ))}
-</select>
-
+            <select
+              value={form.productId}
+              onChange={(e) =>
+                handleChange("productId", e.target.value as ProductId)
+              }
+              style={{ width: "100%", padding: "6px 8px", marginTop: "4px" }}
+            >
+              {products.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {p.name}
+                </option>
+              ))}
+            </select>
           </label>
 
           <label style={{ fontSize: "14px" }}>
@@ -307,7 +318,7 @@ if (field === "channel") {
               required
             />
             <span style={{ fontSize: "11px", color: "#777" }}>
-              Otomatis dari produk & size, tapi boleh diubah untuk diskon.
+              Otomatis dari produk &amp; size, tapi boleh diubah untuk diskon.
             </span>
           </label>
 
@@ -354,13 +365,14 @@ if (field === "channel") {
               }
               style={{ width: "100%", padding: "6px 8px", marginTop: "4px" }}
             >
-              <option value="post_sosmed">Posting Sosial Media</option>
-              <option value="ads_sosmed">Iklan Sosial Media</option>
-              <option value="grabfood">GrabFood</option>
-              <option value="shopeefood">ShopeeFood</option>
-              <option value="direct">Direct / Teman</option>
-              <option value="reseller">Reseller</option>
-              <option value="referral">Referral</option>
+              {(form.channel === "online"
+                ? onlineSubChannels
+                : offlineSubChannels
+              ).map((sc) => (
+                <option key={sc} value={sc}>
+                  {subChannelLabel[sc]}
+                </option>
+              ))}
             </select>
           </label>
 
@@ -448,8 +460,12 @@ if (field === "channel") {
                     <th style={{ padding: "8px" }}>Qty</th>
                     <th style={{ padding: "8px" }}>Harga</th>
                     <th style={{ padding: "8px" }}>Total</th>
-                    <th style={{ padding: "8px", textAlign: "left" }}>Channel</th>
-                    <th style={{ padding: "8px", textAlign: "left" }}>Reseller</th>
+                    <th style={{ padding: "8px", textAlign: "left" }}>
+                      Channel
+                    </th>
+                    <th style={{ padding: "8px", textAlign: "left" }}>
+                      Reseller
+                    </th>
                     <th style={{ padding: "8px" }}>Subsidi</th>
                     <th style={{ padding: "8px" }}>Free?</th>
                   </tr>
