@@ -10,24 +10,24 @@ import { format } from 'date-fns'
 // Product data
 const products = [
   { id: 'broto', name: 'Broto', variants: [
-    { id: 'broto-small', name: 'Small', size: '260ML', price: 15000 },
-    { id: 'broto-large', name: 'Large', size: '1060ML', price: 35000 }
+    { id: 'broto-small', name: 'Small', size: '260ML', price: 12000 },
+    { id: 'broto-large', name: 'Large', size: '1060ML', price: 45000 }
   ]},
   { id: 'dewisri', name: 'Dewi Sri', variants: [
-    { id: 'dewisri-small', name: 'Small', size: '260ML', price: 18000 },
-    { id: 'dewisri-large', name: 'Large', size: '1060ML', price: 45000 }
+    { id: 'dewisri-small', name: 'Small', size: '260ML', price: 20000 },
+    { id: 'dewisri-large', name: 'Large', size: '1060ML', price: 75000 }
   ]},
   { id: 'gendis', name: 'Gendis', variants: [
-    { id: 'gendis-small', name: 'Small', size: '260ML', price: 17000 },
-    { id: 'gendis-large', name: 'Large', size: '1060ML', price: 40000 }
+    { id: 'gendis-small', name: 'Small', size: '260ML', price: 18000 },
+    { id: 'gendis-large', name: 'Large', size: '1060ML', price: 72000 }
   ]},
   { id: 'lojinawi', name: 'Lojinawi', variants: [
-    { id: 'lojinawi-small', name: 'Small', size: '260ML', price: 16000 },
-    { id: 'lojinawi-large', name: 'Large', size: '1060ML', price: 38000 }
+    { id: 'lojinawi-small', name: 'Small', size: '260ML', price: 15000 },
+    { id: 'lojinawi-large', name: 'Large', size: '1060ML', price: 60000 }
   ]},
   { id: 'widuri', name: 'Widuri', variants: [
-    { id: 'widuri-small', name: 'Small', size: '260ML', price: 20000 },
-    { id: 'widuri-large', name: 'Large', size: '1060ML', price: 50000 }
+    { id: 'widuri-small', name: 'Small', size: '260ML', price: 15000 },
+    { id: 'widuri-large', name: 'Large', size: '1060ML', price: 60000 }
   ]}
 ]
 
