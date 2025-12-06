@@ -12,7 +12,7 @@ import {
 
 interface DatePickerProps {
   value?: Date
-  onChange?: (date: Date) => void
+  onChange?: (date: Date | undefined) => void
   placeholder?: string
   className?: string
 }
@@ -27,7 +27,7 @@ export function DatePicker({
 
   const handleSelect = (selectedDate: Date | undefined) => {
     setDate(selectedDate)
-    if (selectedDate && onChange) {
+    if (onChange) {
       onChange(selectedDate)
     }
   }
