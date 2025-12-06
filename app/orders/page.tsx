@@ -235,19 +235,20 @@ export default function OrdersPage() {
           <label style={{ fontSize: "14px" }}>
             Produk
             <br />
-            <select
-              value={form.productId}
-              onChange={(e) =>
-                handleChange("productId", e.target.value as ProductId)
-              }
-              style={{ width: "100%", padding: "6px 8px", marginTop: "4px" }}
-            >
-              {products.map((p) => (
-                <option key={p.id} value={p.id}>
-                  {p.name} (Rp {p.basePriceSmall.toLocaleString("id-ID")} / 260ml)
-                </option>
-              ))}
-            </select>
+<select
+  value={form.productId}
+  onChange={(e) =>
+    handleChange("productId", e.target.value as ProductId)
+  }
+  style={{ width: "100%", padding: "6px 8px", marginTop: "4px" }}
+>
+  {products.map((p) => (
+    <option key={p.id} value={p.id}>
+      {p.name}
+    </option>
+  ))}
+</select>
+
           </label>
 
           <label style={{ fontSize: "14px" }}>
