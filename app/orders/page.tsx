@@ -46,15 +46,18 @@ const products: Product[] = [
   { id: "WIDURI", name: "Widuri", basePriceSmall: 15000 },
 ];
 
-const subChannelLabel: Record<SubChannel, string> = {
-  post_sosmed: "Posting Sosial Media",
-  ads_sosmed: "Iklan Sosial Media",
-  grabfood: "GrabFood",
-  shopeefood: "ShopeeFood",
-  direct: "Direct (walk-in / teman)",
-  reseller: "Reseller",
-  referral: "Referral",
-};
+const onlineSubChannels: SubChannel[] = [
+  "post_sosmed",
+  "ads_sosmed",
+  "grabfood",
+  "shopeefood",
+];
+
+const offlineSubChannels: SubChannel[] = [
+  "direct",
+  "reseller",
+  "referral",
+];
 
 function getProduct(productId: ProductId): Product {
   const found = products.find((p) => p.id === productId);
@@ -98,6 +101,16 @@ export default function OrdersPage() {
   ) {
     setForm((prev) => {
       let next = { ...prev, [field]: value } as typeof form;
+// Kalau channel diganti, pastikan subChannel ikut menyesuaikan
+if (field === "channel") {
+  const ch = value as SalesChannel;
+  const allowed =
+    ch === "online" ? onlineSubChannels : offlineSubChannels;
+
+  if (!allowed.includes(next.subChannel)) {
+    next.subChannel = allowed[0]; // set ke sub-channel pertama yang valid
+  }
+}
 
       // Kalau ganti produk atau size dan bukan free product, update harga otomatis
       if (
