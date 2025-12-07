@@ -1,0 +1,26 @@
+[
+  {
+    "id": "broto",
+    "name": "Broto",
+    "priceSmall": 12000,
+    "priceLarge": 45000
+  },
+  {
+    "id": "gendis",
+    "name": "Gendis",
+    "priceSmall": 18000,
+    "priceLarge": 72000
+  },
+  {
+    "id": "lojinawi",
+    "name": "Lojinawi",
+    "priceSmall": 15000,
+    "priceLarge": 60000
+  },
+  {
+    "id": "widuri",
+    "name": "Widuri",
+    "priceSmall": 15000,
+    "priceLarge": 60000
+  }
+]
