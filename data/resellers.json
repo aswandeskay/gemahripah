@@ -1,0 +1,26 @@
+[
+  {
+    "id": "melly",
+    "name": "Melly",
+    "scheme": "commission",
+    "commissionPercent": 10
+  },
+  {
+    "id": "claudia",
+    "name": "Claudia",
+    "scheme": "commission",
+    "commissionPercent": 15
+  },
+  {
+    "id": "jessica",
+    "name": "Jessica",
+    "scheme": "free_product",
+    "commissionPercent": 0
+  },
+  {
+    "id": "iyos",
+    "name": "Iyos",
+    "scheme": "commission",
+    "commissionPercent": 5
+  }
+]
